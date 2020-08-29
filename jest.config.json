@@ -1,0 +1,15 @@
+{
+  "preset": "ts-jest",
+  "transform": {
+    "^.+\\.svelte$": "./dist/index.js",
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "globals": {
+    "ts-jest": {
+      "diagnostics": true,
+      "tsConfig": {
+        "types": ["svelte", "jest", "node"]
+      }
+    }
+  }
+}

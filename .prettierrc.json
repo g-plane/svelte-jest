@@ -1,0 +1,13 @@
+{
+  "singleQuote": true,
+  "semi": false,
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files":["**/*.svelte"],
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+}
