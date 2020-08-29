@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "Pig Fang <g-plane@hotmail.com>",
   "description": "Jest custom transformer for transforming Svelte.",
+  "repository": "g-plane/svelte-jest",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
