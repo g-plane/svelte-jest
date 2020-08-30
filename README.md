@@ -11,6 +11,12 @@ but this package is opinionated and simple: It requires [`svelte-preprocess`](ht
 If you need to customize something,
 use [`svelte-jester`](https://www.npmjs.com/package/svelte-jester) instead.
 
+## 🔥 Features
+
+- Source code is written in TypeScript.
+- No configuration (`svelte.config.js`) is required.
+- Better compatibility in some cases.
+
 ## 💿 Install
 
 ```shell
