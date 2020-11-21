@@ -7,7 +7,7 @@
   "globals": {
     "ts-jest": {
       "diagnostics": true,
-      "tsConfig": {
+      "tsconfig": {
         "types": ["svelte", "jest", "node"]
       }
     }
