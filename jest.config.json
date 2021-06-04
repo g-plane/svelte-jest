@@ -1,5 +1,6 @@
 {
   "preset": "ts-jest",
+  "testEnvironment": "jsdom",
   "transform": {
     "^.+\\.svelte$": "./dist/index.js",
     "^.+\\.tsx?$": "ts-jest"

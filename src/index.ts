@@ -28,8 +28,10 @@ function transform(options: CompileOptions) {
   }
 }
 
-export function createTransformer(options?: CompileOptions) {
-  return {
-    process: transform(options ?? {}),
-  }
+export default {
+  createTransformer(options: CompileOptions = {}) {
+    return {
+      process: transform(options),
+    }
+  },
 }

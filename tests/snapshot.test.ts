@@ -1,6 +1,8 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
-import { createTransformer } from '../src'
+import transformer from '../src'
+
+const { createTransformer } = transformer
 
 test('basic transformation', async () => {
   const file = await fs.readFile(
