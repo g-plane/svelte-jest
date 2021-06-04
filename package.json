@@ -8,12 +8,11 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "typeck": "tsc -p . --noEmit && tsc -p ./tests --noEmit",
     "fmt": "prettier --write **/*.ts **/*.svelte",
     "fmt:check": "prettier --check **/*.ts **/*.svelte",
-    "pretest": "yarn build",
-    "test": "jest"
+    "test": "pnpm build && jest"
   },
   "files": [
     "dist/"
