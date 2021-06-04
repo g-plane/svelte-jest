@@ -2,15 +2,14 @@ import { promises as fs } from 'fs'
 import * as path from 'path'
 import transformer from '../src'
 
-const { createTransformer } = transformer
+const { process } = transformer
 
 test('basic transformation', async () => {
   const file = await fs.readFile(
     path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
     'utf-8',
   )
-  const transformer = createTransformer()
-  const js = transformer.process(file, 'ExampleComponent.svelte')
+  const js = process(file, 'ExampleComponent.svelte', { transformerConfig: {} })
   expect(js.code).toMatchSnapshot('code')
   expect(js.map).toMatchSnapshot('sourcemap')
 })
@@ -20,11 +19,12 @@ test('with options', async () => {
     path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
     'utf-8',
   )
-  const transformer = createTransformer({
-    customElement: true,
-    tag: 'snapshot-example',
+  const js = process(file, 'ExampleComponent.svelte', {
+    transformerConfig: {
+      customElement: true,
+      tag: 'snapshot-example',
+    },
   })
-  const js = transformer.process(file, 'ExampleComponent.svelte')
   expect(js.code).toMatchSnapshot('code')
   expect(js.map).toMatchSnapshot('sourcemap')
 })
@@ -34,8 +34,9 @@ test('transform to ESM', async () => {
     path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
     'utf-8',
   )
-  const transformer = createTransformer({ format: 'esm' })
-  const js = transformer.process(file, 'ExampleComponent.svelte')
+  const js = process(file, 'ExampleComponent.svelte', {
+    transformerConfig: { format: 'esm' },
+  })
   expect(js.code).toMatchSnapshot('code')
   expect(js.map).toMatchSnapshot('sourcemap')
 })
