@@ -28,3 +28,14 @@ test('with options', async () => {
   expect(js.code).toMatchSnapshot('code')
   expect(js.map).toMatchSnapshot('sourcemap')
 })
+
+test('transform to ESM', async () => {
+  const file = await fs.readFile(
+    path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
+    'utf-8',
+  )
+  const transformer = createTransformer({ format: 'esm' })
+  const js = transformer.process(file, 'ExampleComponent.svelte')
+  expect(js.code).toMatchSnapshot('code')
+  expect(js.map).toMatchSnapshot('sourcemap')
+})

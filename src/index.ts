@@ -22,7 +22,10 @@ function transform(options: CompileOptions) {
       ...options,
     })
 
-    js.code = `${js.code}Object.defineProperty(exports, "__esModule", { value: true });`
+    if (!options.format || options.format === 'cjs') {
+      js.code +=
+        'Object.defineProperty(exports, "__esModule", { value: true });'
+    }
 
     return js
   }
