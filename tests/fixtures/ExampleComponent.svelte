@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-
-  onMount(() => {})
+  let a: number
 </script>
 
 <style>
@@ -11,3 +9,4 @@
 </style>
 
 <button id="btn" />
+{a}
