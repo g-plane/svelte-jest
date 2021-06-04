@@ -9,7 +9,9 @@ test('basic transformation', async () => {
     path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
     'utf-8',
   )
-  const js = process(file, 'ExampleComponent.svelte', { transformerConfig: {} })
+  const js = await process(file, 'ExampleComponent.svelte', {
+    transformerConfig: {},
+  })
   expect(js.code).toMatchSnapshot('code')
   expect(js.map).toMatchSnapshot('sourcemap')
 })
@@ -19,7 +21,7 @@ test('with options', async () => {
     path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
     'utf-8',
   )
-  const js = process(file, 'ExampleComponent.svelte', {
+  const js = await process(file, 'ExampleComponent.svelte', {
     transformerConfig: {
       customElement: true,
       tag: 'snapshot-example',
@@ -34,7 +36,7 @@ test('transform to ESM', async () => {
     path.join(__dirname, 'fixtures/ExampleComponent.svelte'),
     'utf-8',
   )
-  const js = process(file, 'ExampleComponent.svelte', {
+  const js = await process(file, 'ExampleComponent.svelte', {
     transformerConfig: { format: 'esm' },
   })
   expect(js.code).toMatchSnapshot('code')

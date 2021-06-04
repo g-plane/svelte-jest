@@ -24,6 +24,7 @@
     "testing-library"
   ],
   "peerDependencies": {
+    "jest": "^27.0.0",
     "svelte": "^3.24.0",
     "svelte-preprocess": "^4.1.0"
   },

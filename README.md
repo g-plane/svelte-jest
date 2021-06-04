@@ -16,6 +16,7 @@ use [`svelte-jester`](https://www.npmjs.com/package/svelte-jester) instead.
 - Source code is written in TypeScript.
 - No configuration (`svelte.config.js`) is required.
 - Better compatibility in some cases.
+- Leverage Jest's asynchronous transformers, so it's faster than those use `child_process` to transform Svelte code.
 
 ## 💿 Install
 
@@ -38,7 +39,7 @@ please also add them properly:
 
 ```json
 "transform": {
-  "^.+\\.svelte$": "./dist/index.js",
+  "^.+\\.svelte$": "@gplane/svelte-jest",
   "^.+\\.tsx?$": "ts-jest"
 }
 ```

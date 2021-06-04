@@ -1,22 +1,22 @@
 import * as path from 'path'
-import { execSync } from 'child_process'
 import * as svelte from 'svelte/compiler'
+import sveltePreprocess from 'svelte-preprocess'
 import type { CompileOptions } from 'svelte/types/compiler/interfaces'
 
-type CompiledJS = { code: string; map: string }
+type TransformedSource = { code: string; map?: string }
 
-function transform(
+async function transform(
   sourceText: string,
   sourcePath: string,
   { transformerConfig: options }: { transformerConfig: CompileOptions },
-): CompiledJS {
-  const preprocessed = execSync(
-    `${process.execPath} --unhandled-rejections=strict ` +
-      require.resolve('../dist/preprocess.js'),
-    { env: { source: sourceText, filename: sourcePath } },
-  ).toString()
+): Promise<TransformedSource> {
+  const preprocessed = await svelte.preprocess(
+    sourceText,
+    sveltePreprocess({ sourceMap: true }),
+    { filename: sourcePath },
+  )
 
-  const { js }: { js: CompiledJS } = svelte.compile(preprocessed, {
+  const { js }: { js: TransformedSource } = svelte.compile(preprocessed.code, {
     filename: path.basename(sourcePath),
     css: false,
     accessors: true,
